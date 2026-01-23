@@ -1,0 +1,20 @@
+services:
+  n8n:
+    #ultima version 2.3.2
+    #version que si incluye execute command 1.123.16
+    image: docker.n8n.io/n8nio/n8n:1.123.16
+    container_name: n8n_exec
+    ports:
+      - "5678:5678"
+    environment:
+      - N8N_EXECUTE_COMMAND_ALLOW=true
+      - N8N_RUNNERS_ENABLED=false
+      #- N8N_DIAGNOSTICS_ENABLED=false
+      #- N8N_USER_MANAGEMENT_DISABLED=false
+
+
+    volumes:
+      - n8n_exec_data:/home/node/.n8n
+      - ~/Sites/n8n/n8n-python/eliminar-duplicados/mis_archivos:/files
+volumes:
+  n8n_exec_data:    
