@@ -29,7 +29,20 @@ source ~/.zshrc
 echo $N8N_RUNNERS_AUTH_TOKEN
 ```
 
-### Instalar el contenedor de N8N
+
+### Instalar el contenedor de N8N sin runner
+```
+docker run -d \
+  --name n8n \
+  --network n8n_net \
+  -p 5678:5678 \
+  -e N8N_EXECUTE_COMMAND_ALLOW=true \
+  -v n8n_data:/home/node/.n8n \
+  docker.n8n.io/n8nio/n8n:latest
+```
+
+
+### Instalar el contenedor de N8N con runner
 ```
 docker run -d \
   --name n8n \
